@@ -399,8 +399,7 @@ impl Capex_historico{
                                 .await?;
 
                                 Ok(())
-
-                                
+    
                                 }
 
         

@@ -9,6 +9,8 @@ pub struct Lancamentos{
         valor: Option<BigDecimal>,
         ticket: Option<String>,
         variacao_mes_anterior: Option<BigDecimal>,
+
+
 }
 
 impl Lancamentos{
@@ -21,6 +23,8 @@ impl Lancamentos{
                         valor: None,
                         ticket: None,
                         variacao_mes_anterior: None,
+                        
+
                 };
                 dados
 

@@ -1,5 +1,5 @@
 pub struct Fcff{
-
+        ticket: String,
         fluxo_caixa_descontado: Option <BigDecimal>,
         fluxo_caixa_livre : Option <BigDecimal>,
 
@@ -18,15 +18,12 @@ pub struct valores_banco{
 impl Fcff{
         pub fn new() -> Self{
                 Self{
-                        ebit_12_meses: None,
-                        ebt_12_meses: None,
-                        taxa: None,
-                        depreciacao: None,
-                        variacao_capital_giro_12_meses: None,
-                        capex: None,
-
+                        ticket: None,
                         fluxo_caixa_descontado: None,
                         fluxo_caixa_livre: None,
+
+                        taxa_titulo: None,
+                        inflacao: None,
                         
                 };
 
@@ -136,7 +133,7 @@ impl Fcff{
         
         }
 
-        pub fn calculos(valores_banco: Option<BigDecimal>){
+        pub fn calculo_fcl(valores_banco: Option<BigDecimal>){
                 let taxa = 
                         match(&ebt, &tributo){
                                 (Some(ebt), Some(tributo))=>{
@@ -150,7 +147,9 @@ impl Fcff{
                                 } _=> None,
                         };
                 
-
+                
+                //como o capex adiquirido estava especificado no relatorio, não precisou fazer a formula
+                //para estima-lo
                 let fcff = 
                         match(&nopat, &depreciacao, &capex, capital_giro){
                                 (Some(nopat), Some(depreciacao), Some(capex), Some(capital_giro))=>{
@@ -166,12 +165,6 @@ impl Fcff{
                         };
         
         }
-        
 
-        
-
-
-        
-        }
-
+}
 }
